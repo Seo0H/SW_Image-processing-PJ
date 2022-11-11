@@ -16,3 +16,11 @@ openCV 라이브러리 없이 Web기반 환경에서 영상처리 알고리즘 �
 <center> <img src = "./img/Readme/기능 프리뷰.png" width="800"> </center>
 <br>
 
+---
+<br>
+
+##  **More Info. about PJ**
+###  **👇Clik the LOGO👇**
+<br>
+<p href="https://seo0h.tistory.com/7/" >
+<img src="https://img.shields.io/badge/Tistory-PJ_Summary-EEEEEE?style=for-the-badge&logo=Tistory&logoColor=white"/></p>
