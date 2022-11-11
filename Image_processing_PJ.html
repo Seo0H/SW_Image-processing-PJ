@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js를 통한 영상처리 구현 홈페이지</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+
+<body onload="init()" style="text-align:center">
+
+    <div style="padding: 30px ;"></div>
+
+    <header class="title-container">
+        <img src="./img/Title.png" alt="" />
+    </header>
+
+    <form>
+        <div class="filebox">
+            <label for="inFile">
+                <img src="./img/Button.png" alt="파일 등록 버튼" />
+            </label>
+
+            <input class="upload-name" id="upload-name" value="Only .raw" disabled="disabled" />
+            <input type="file" id="inFile" onchange= "openImage()" accept=".raw" /><br>
+        </div>
+
+        <div class="wrap-container">
+            <select name="pixel" onchange="selectAlgo(this.form.pixel)">
+                <option value=0> 화소점 선택 </option>
+                <optgroup herf="#" label="화소점 처리">
+                    <option value=100> 동일영상 </option> <!-- 표준으로 사용 가능. 복사해서 쓰기 용이하게 -->
+                    <option value=101> 밝게하기 </option> <!-- pixel 값이 101이 넘으면 밝게 하기 -->
+                    <option value=103> 반전하기 </option>
+                    <option value=104> 어둡게하기 </option>
+                    <option value=105> 흑백(128기준) </option>
+                    <option value=106> 흑백(평균값 기준) </option>
+                    <option value=107> 흑백(중앙값 기준) </option>
+                    <option value=301> 감마 </option>
+                    <option value=302> 범위강조</option>
+                    <option value=303> 파라볼라 캡 </option>
+                    <option value=304> 파라볼라 컵 </option>
+                </optgroup>
+            </select>
+            <select name="geometry" onchange="selectAlgo(this.form.geometry)">
+                <option value=0> 기하학 선택 </option>
+                <optgroup label="기하학 처리">
+                    <option value=201> 좌우 미러링 </option>
+                    <option value=202> 상하 미러링 </option>
+                    <option value=203> 축소 </option>
+                    <option value=204> 확대(Forwarding) </option>
+                    <option value=205> 확대(Backwording) </option>
+                    <option value=305> 이동 </option>
+                    <option value=306> 회전 </option>
+                </optgroup>
+            </select>
+
+            <select name="histogram" onchange="selectAlgo(this.form.histogram)">
+                <option value=0> 히스토그램 선택 </option>
+                <optgroup label="히스토그램 처리">
+                    <option value=401> 히스토 스트레칭</option>
+                    <option value=402> 엔드인 탐색</option>
+                    <option value=403> 형활화</option>
+                </optgroup>
+            </select>
+
+            <select name="area" onchange="selectAlgo(this.form.area)">
+                <option value=0> 화소영역 선택 </option>
+                <optgroup label="화소영역 처리">
+                    <option value=501> 엠보싱 </option>
+                    <option value=502> 블러링 </option>
+                    <option value=508> 가우시안 블러 </option>
+                    <option value=503> 경계선 </option>
+                    <option value=504> LoG </option>
+                    <option value=505> 7X7 DoG </option>
+                    <option value=506> 유사 연산 </option>
+                    <option value=507> 차 연산 </option>
+                </optgroup>
+            </select>
+        </div>
+
+    </form><br>
+
+    <ul>
+        <li class="canvas-container">
+            <div class="canvas">
+                <canvas id="inCanvas" class ="canvas-box" style="background-color: rgb(229, 229, 229)"> </canvas>
+                <p> Before </p>
+            </div>
+
+            <div class="canvas">
+                <canvas id="outCanvas" class ="canvas-box" style="background-color: rgb(229, 229, 229)"> </canvas> <!-- 캔버스 닫기. 안닫으면 안나옴 -->
+                <p> After </p>
+            </div>
+        </li>
+    </ul>
+
+    <script src="./code.js"></script>
+</body>
+
+</html>
